@@ -1,404 +1,143 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Bunion3D — Personalised, 3D-printed bunion correctors</title>
-  <meta name="description" content="Personalised bunion corrector at scale">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Bunion3D — Personalised, 3D-printed bunion correctors">
-  <meta property="og:description" content="Personalised bunion corrector at scale">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bunion3d.com/">
-  <meta property="og:image" content="https://bunion3d.com/bunion3d-logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://bunion3d.com/bunion3d-logo.png">
-  <meta name="theme-color" content="#2b6c9e">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bunion3D – Personalised Bunion Correctors</title>
+  <meta name="description" content="Every foot is unique. Bunion3D creates personalised bunion correctors, engineered for your anatomy.">
+  
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
 
-  <!-- Tailwind CDN -->
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
-    /* Bunion3D Tech-Health Hybrid Palette */
-    :root{
-      --primary:#2b6c9e;   /* Steel Blue */
-      --mint:#dcfcee;      /* Soft Mint */
-      --lime:#c3f83b;      /* Lime Accent */
-      --charcoal:#1f2937;  /* Charcoal */
-      --white:#ffffff;     /* White */
+    body { font-family: 'Inter', sans-serif; }
+    .btn-primary {
+      background-color: #6A8BAF;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
     }
-    body{
-      background:
-        radial-gradient(1200px 600px at 10% 0%, var(--mint) 0%, transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, #eef7ff 0%, transparent 50%);
-      color:var(--charcoal);
+    .btn-primary:hover { background-color: #4C6E91; }
+
+    /* Social Icon Styles */
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      fill: #6A8BAF;
+      transition: transform 0.3s ease, fill 0.3s ease;
     }
-    /* Utility helpers mapped to palette */
-    .bg-primary{background-color:var(--primary)}
-    .text-primary{color:var(--primary)}
-    .bg-mint{background-color:var(--mint)}
-    .bg-lime{background-color:var(--lime)}
-    .text-charcoal{color:var(--charcoal)}
-    .border-primary{border-color:var(--primary)}
-    .hover\:bg-lime\/90:hover{background-color:color-mix(in oklab, var(--lime) 90%, black)}
+    .social-icon:hover {
+      fill: #98C9A3;
+      transform: scale(1.2);
+    }
   </style>
 </head>
-<body class="text-charcoal antialiased">
+<body class="bg-white text-gray-800">
 
   <!-- Header -->
-  <header class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-3">
-      <img src="/bunion3d-logo.png" alt="Bunion3D logo" class="h-10 w-auto" />
-      <span class="font-semibold tracking-tight text-xl">Bunion3D</span>
-    </a>
-    <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="#about" class="hover:text-slate-950">About</a>
-      <a href="#how" class="hover:text-slate-950">How it works</a>
-      <a href="#personalisation" class="hover:text-slate-950">Your Fit</a>
-      <a href="#xray" class="hover:text-slate-950">Understanding</a>
-      <a href="#contact" class="hover:text-slate-950">Contact</a>
-      <a href="#social" class="hover:text-slate-950">Social</a>
-      <button onclick="toggleModal(true)" class="hover:text-slate-950">Privacy</button>
-    </nav>
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-2">
+        <img src="/bunion3d-logo.png" alt="Bunion3D Logo" class="h-10">
+        <span class="font-bold text-xl text-[#6A8BAF]">Bunion3D</span>
+      </a>
+      <nav class="space-x-6 font-medium">
+        <a href="#about" class="hover:text-[#6A8BAF]">About</a>
+        <a href="#understanding" class="hover:text-[#6A8BAF]">Understanding</a>
+        <a href="#social" class="hover:text-[#6A8BAF]">Social</a>
+      </nav>
+    </div>
   </header>
 
   <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-4 py-12 md:py-20">
-    <div class="grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
-          Every foot is unique.<br class="hidden md:block"/> Engineered for your anatomy.
-        </h1>
-        <p id="seg-line" class="mt-3 text-sm text-primary hidden"></p>
-        <p class="mt-4 text-lg text-slate-600 max-w-prose" id="hero-copy">
-          Personalised bunion correctors designed with precision, powered by AI and 3D printing. Built for comfort and efficacy.
-        </p>
-
-        <!-- Micro-configurator -->
-        <div class="mt-6 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm">
-          <div class="grid sm:grid-cols-3 gap-4">
-            <label class="block text-sm">Primary side
-              <select id="side" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
-                <option value="Right">Right</option>
-                <option value="Left">Left</option>
-                <option value="Both">Both</option>
-              </select>
-            </label>
-            <label class="block text-sm">Daily activity
-              <select id="activity" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
-                <option value="Desk/Light">Desk / Light</option>
-                <option value="Mixed">Mixed</option>
-                <option value="Active">Active</option>
-              </select>
-            </label>
-            <label class="block text-sm">Skin sensitivity
-              <select id="skin" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
-                <option value="Normal">Normal</option>
-                <option value="Sensitive">Sensitive</option>
-              </select>
-            </label>
-          </div>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4 items-center">
-            <label class="block text-sm">Discomfort level
-              <input id="pain" type="range" min="1" max="5" value="3" class="w-full" />
-            </label>
-            <div class="text-sm text-slate-600">
-              <span id="plan-summary">Recommended: soft TPU (~85A), night wear 1–2 hrs.</span>
-              <span class="text-xs text-slate-500">(Informational only; not medical advice.)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interest form -->
-        <form name="interest" method="POST" data-netlify="true" class="mt-6 space-y-4 md:flex md:space-y-0 md:space-x-3">
-          <input type="hidden" name="form-name" value="interest" />
-          <input type="hidden" name="segment" id="hidden-segment" />
-          <input type="hidden" name="side" id="hidden-side" />
-          <input type="hidden" name="activity" id="hidden-activity" />
-          <input type="hidden" name="skin" id="hidden-skin" />
-          <input type="hidden" name="pain" id="hidden-pain" />
-          <input type="hidden" name="tz" id="hidden-tz" />
-          <input type="hidden" name="lang" id="hidden-lang" />
-          <input required name="email" type="email" placeholder="Email address" class="w-full md:w-auto md:flex-1 rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
-          <button class="inline-flex items-center justify-center rounded-xl px-5 py-3 bg-lime text-white font-medium shadow hover:bg-lime/90">
-            Join the early access list
-          </button>
-        </form>
-        <p class="mt-3 text-xs text-slate-500">By joining, you consent to be contacted about Bunion3D. No spam. Unsubscribe at any time.</p>
-      </div>
-
-      <div class="relative">
-        <div class="aspect-[4/3] rounded-2xl bg-white/70 shadow-lg ring-1 ring-slate-200 p-6">
-          <div class="grid grid-cols-3 gap-3 h-full">
-            <div class="col-span-2 rounded-xl border border-slate-200 p-4 flex flex-col justify-between">
-              <div>
-                <div class="text-xs uppercase tracking-wide text-slate-500">Scan</div>
-                <div class="h-24 mt-2 rounded-lg bg-gradient-to-br from-[var(--mint)] to-white border border-slate-200"></div>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wide text-slate-500">AI analysis</div>
-                <div class="h-24 mt-2 rounded-lg bg-gradient-to-br from-white to-[#eef7ff] border border-slate-200"></div>
-              </div>
-            </div>
-            <div class="rounded-xl border border-slate-200 p-4 flex flex-col justify-between">
-              <div>
-                <div class="text-xs uppercase tracking-wide text-slate-500">Made-to-fit</div>
-                <div class="h-24 mt-2 rounded-lg bg-gradient-to-br from-[#fff1f2] to-[#fff7e6] border border-slate-200"></div>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wide text-slate-500">3D-print</div>
-                <div class="h-24 mt-2 rounded-lg bg-gradient-to-br from-[var(--mint)] to-white border border-slate-200"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="mt-3 text-xs text-slate-500 text-center">Conceptual UI mock — no personal data captured on this site.</p>
-      </div>
+  <section class="text-center py-20 bg-gradient-to-b from-[#6A8BAF]/10 to-white">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-[#6A8BAF]">Every Foot is Unique</h1>
+      <p class="mt-4 text-lg text-gray-600">Engineered for your anatomy with personalised 3D-printed bunion correctors.</p>
+      <a href="#waitlist" class="btn-primary mt-6 inline-block">Join the Waitlist</a>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="max-w-6xl mx-auto px-4 py-14">
-    <div class="rounded-2xl border border-slate-200 bg-white/70 p-8 shadow-sm">
-      <h2 class="text-2xl font-bold">About Bunion3D</h2>
-      <p class="mt-3 text-slate-600 max-w-3xl">
-        We believe every foot is unique — and effective correction must be, too. Bunion3D combines AI-driven modelling with on-demand 3D printing to deliver personalised bunion correctors. By designing for scale, we aim to make clinical-level personalisation accessible and affordable.
-      </p>
-      <div class="mt-6 grid md:grid-cols-3 gap-4 text-sm">
-        <div class="rounded-xl border border-slate-200 bg-white/60 p-4"><span class="font-semibold">Personalised</span><br>Parametric models tuned to your anatomy.</div>
-        <div class="rounded-xl border border-slate-200 bg-white/60 p-4"><span class="font-semibold">Comfort-first</span><br>Materials and fits chosen for wearability.</div>
-        <div class="rounded-xl border border-slate-200 bg-white/60 p-4"><span class="font-semibold">Built to scale</span><br>Digital workflow lowers cost per patient.</div>
+  <section id="about" class="container mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center text-[#6A8BAF] mb-12">About Bunion3D</h2>
+    <div class="grid md:grid-cols-3 gap-10 text-center">
+      <div>
+        <h3 class="font-semibold text-xl mb-2">Personalised Care</h3>
+        <p>Tailored bunion correctors designed from your unique anatomy.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-xl mb-2">Smart Technology</h3>
+        <p>AI and 3D design ensure accuracy, comfort, and effectiveness.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-xl mb-2">Accessible Innovation</h3>
+        <p>Scaling personalisation makes advanced care affordable to all.</p>
       </div>
     </div>
   </section>
 
-  <!-- Personalisation Section -->
-  <section id="personalisation" class="max-w-6xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold">Your Personalised Journey</h2>
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-        <div class="text-sm font-semibold">Tailored for You</div>
-        <p class="mt-2 text-slate-600">Your anatomy, your lifestyle, your comfort. No two correctors are the same — each is engineered to fit your unique foot shape.</p>
-      </div>
-      <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-        <div class="text-sm font-semibold">Adaptive Design</div>
-        <p class="mt-2 text-slate-600">Our parametric models adapt correction angles, reinforcement zones, and flexibility to your gait profile, ensuring truly individualised support.</p>
-      </div>
+  <!-- Understanding -->
+  <section id="understanding" class="bg-gray-50 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-[#6A8BAF] mb-6">Understanding Hallux Valgus</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-8">Hallux Valgus (bunion) is characterised by the deviation of the big toe and an increased Hallux Valgus Angle (HVA). Bunion3D devices are designed to gently guide correction while maintaining comfort.</p>
+      <picture>
+        <source srcset="/bunion-xray.webp" type="image/webp">
+        <img src="/bunion-xray.jpg" alt="X-ray showing Hallux Valgus Angle (HVA) and Intermetatarsal Angle (IMA)" class="mx-auto rounded-lg shadow max-w-full h-auto">
+      </picture>
     </div>
   </section>
 
-  <!-- How it works -->
-  <section id="how" class="max-w-6xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold">How it works</h2>
-    <div class="mt-6 grid md:grid-cols-3 gap-6">
-      <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-        <div class="text-sm font-semibold">1) Smartphone scan</div>
-        <p class="mt-2 text-slate-600">We capture foot geometry and landmarks from a short guided scan — no special hardware required.</p>
-      </div>
-      <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-        <div class="text-sm font-semibold">2) AI-driven modelling</div>
-        <p class="mt-2 text-slate-600">Algorithms estimate deformity angles and generate a parametric CAD model tailored to your anatomy.</p>
-      </div>
-      <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-        <div class="text-sm font-semibold">3) Skin-safe 3D print</div>
-        <p class="mt-2 text-slate-600">A flexible, biocompatible device is 3D-printed and finished for comfort and progressive correction.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Understanding Hallux Valgus (X-ray) -->
-  <section id="xray" class="max-w-6xl mx-auto px-4 py-14">
-    <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-      <h2 class="text-2xl font-bold">Understanding Hallux Valgus</h2>
-      <div class="mt-4 grid md:grid-cols-2 gap-6 items-start">
-        <figure class="text-center">
-          <!-- WebP first, JPEG fallback -->
-          <picture>
-            <source srcset="/bunion-xray.webp" type="image/webp">
-            <img src="/bunion-xray.jpg" alt="X-ray showing Hallux Valgus Angle (HVA) and Intermetatarsal Angle (IMA)" class="mx-auto rounded-lg shadow max-w-full h-auto">
-          </picture>
-          <figcaption class="mt-3 text-sm text-slate-500">Example radiograph annotated with HVA and IMA (illustrative).</figcaption>
-        </figure>
-        <div class="text-slate-600">
-          <p>Bunion3D’s approach considers key anatomical measurements such as the <span class="font-medium">Hallux Valgus Angle (HVA)</span> and <span class="font-medium">Intermetatarsal Angle (IMA)</span> to guide personalised device parameters.</p>
-          <ul class="mt-3 list-disc pl-5 space-y-1">
-            <li>Input: smartphone scan + clinical metrics (when available)</li>
-            <li>Output: parametric model tuned to your anatomy</li>
-            <li>Goal: progressive correction with comfort</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section id="cta" class="max-w-6xl mx-auto px-4 py-14">
-    <div class="rounded-2xl border border-slate-200 bg-white/80 p-8 shadow-sm text-center">
-      <h2 class="text-2xl font-bold">Join the early access list</h2>
-      <p class="mt-2 text-slate-600">Be the first to hear about pilot availability and launch updates.</p>
-      <form name="waitlist" method="POST" data-netlify="true" class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-        <input type="hidden" name="form-name" value="waitlist" />
-        <input required name="email" type="email" placeholder="Email address" class="w-full sm:w-96 rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
-        <button class="inline-flex items-center justify-center rounded-xl px-5 py-3 bg-lime text-white font-medium shadow hover:bg-lime/90">Notify me</button>
-      </form>
-      <p class="mt-3 text-xs text-slate-500">We’ll only use your email to contact you about Bunion3D. Unsubscribe anytime.</p>
-    </div>
-  </section>
-
-  <!-- Science & IP -->
-  <section id="science" class="max-w-6xl mx-auto px-4 py-14">
-    <div class="rounded-2xl border border-slate-200 bg-white/70 p-8 shadow-sm">
-      <h2 class="text-2xl font-bold">Science & IP</h2>
-      <ul class="mt-4 list-disc pl-5 text-slate-600 space-y-2">
-        <li>Based on peer-reviewed research in mass personalisation and digital manufacturing.</li>
-        <li>Provisional patent filed with USPTO (No. 63/827,789, 20 June 2025).</li>
-        <li>Designed to balance corrective force and comfort; clinical pilots planned.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="max-w-6xl mx-auto px-4 py-14">
-    <div class="rounded-2xl border border-slate-200 bg-white/70 p-8 shadow-sm">
-      <h2 class="text-2xl font-bold">Get in touch</h2>
-      <p class="mt-3 text-slate-600">Email <a href="mailto:info@bunion3d.com" class="underline">info@bunion3d.com</a> or join the early access list above.</p>
-    </div>
+  <!-- Waitlist -->
+  <section id="waitlist" class="container mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl font-bold text-[#6A8BAF] mb-4">Be the First to Know</h2>
+    <p class="text-gray-600 mb-6">Join our waitlist and we’ll notify you as soon as Bunion3D is available.</p>
+    <form name="waitlist" method="POST" data-netlify="true" class="max-w-md mx-auto">
+      <input type="email" name="email" placeholder="Enter your email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 mb-4 focus:outline-none focus:ring-2 focus:ring-[#6A8BAF]">
+      <button type="submit" class="btn-primary w-full">Notify Me</button>
+    </form>
   </section>
 
   <!-- Social -->
-  <section id="social" class="max-w-6xl mx-auto px-4 py-10">
-    <div class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm text-center">
-      <h2 class="text-xl font-semibold">Connect with us</h2>
-      <div class="mt-4 flex items-center justify-center gap-5">
+  <section id="social" class="bg-gray-50 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-[#6A8BAF] mb-8">Connect With Us</h2>
+      <div class="flex justify-center space-x-6">
         <!-- Facebook -->
-        <a href="https://www.facebook.com/Bunion3D" target="_blank" aria-label="Facebook" class="group">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="transition-transform group-hover:-translate-y-0.5">
-            <path d="M22 12.06C22 6.55 17.52 2.06 12 2.06S2 6.55 2 12.06c0 4.99 3.66 9.13 8.44 9.94v-7.03H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.77l-.44 2.91h-2.33v7.03C18.34 21.19 22 17.05 22 12.06z" fill="var(--primary)"/>
-          </svg>
+        <a href="https://www.facebook.com/Bunion3D" target="_blank" aria-label="Facebook">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .598 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .598 23.403 0 22.675 0z"/></svg>
         </a>
         <!-- Instagram -->
-        <a href="https://www.instagram.com/bunion3d/" target="_blank" aria-label="Instagram" class="group">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="transition-transform group-hover:-translate-y-0.5">
-            <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM7 4a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5A3.5 3.5 0 1111.999 14 3.5 3.5 0 0112 7.5z" fill="var(--primary)"/>
-          </svg>
+        <a href="https://www.instagram.com/bunion3d/" target="_blank" aria-label="Instagram">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.333-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0 1.684c-3.17 0-3.548.012-4.796.07-1.023.047-1.58.218-1.947.363-.49.19-.84.417-1.209.786-.369.369-.596.719-.786 1.209-.145.367-.316.924-.363 1.947-.058 1.248-.07 1.626-.07 4.796s.012 3.548.07 4.796c.047 1.023.218 1.58.363 1.947.19.49.417.84.786 1.209.369.369.719.596 1.209.786.367.145.924.316 1.947.363 1.248.058 1.626.07 4.796.07s3.548-.012 4.796-.07c1.023-.047 1.58-.218 1.947-.363.49-.19.84-.417 1.209-.786.369-.369.596-.719.786-1.209.145-.367.316-.924.363-1.947.058-1.248.07-1.626.07-4.796s-.012-3.548-.07-4.796c-.047-1.023-.218-1.58-.363-1.947-.19-.49-.417-.84-.786-1.209-.369-.369-.719-.596-1.209-.786-.367-.145-.924-.316-1.947-.363-1.248-.058-1.626-.07-4.796-.07zm0 3.533a6.304 6.304 0 1 1 0 12.608 6.304 6.304 0 0 1 0-12.608zm0 10.423a4.12 4.12 0 1 0 0-8.24 4.12 4.12 0 0 0 0 8.24zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
         </a>
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/Bunion3D/" target="_blank" aria-label="LinkedIn" class="group">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="transition-transform group-hover:-translate-y-0.5">
-            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zm7.5 0h3.8v1.98h.05c.53-1 1.82-2.06 3.75-2.06 4.01 0 4.75 2.64 4.75 6.07V23h-4v-6.46c0-1.54-.03-3.53-2.15-3.53-2.16 0-2.49 1.68-2.49 3.41V23h-4V8.5z" fill="var(--primary)"/>
-          </svg>
+        <a href="https://www.linkedin.com/company/Bunion3D/" target="_blank" aria-label="LinkedIn">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14C2.239 0 0 2.239 0 5.001v13.998C0 21.761 2.239 24 5 24h14c2.761 0 5-2.239 5-5.001V5.001C24 2.239 21.761 0 19 0zM7.12 20.452H3.56V9h3.56v11.452zM5.34 7.576a2.065 2.065 0 1 1 0-4.13 2.065 2.065 0 0 1 0 4.13zm15.112 12.876h-3.56v-5.605c0-1.337-.027-3.059-1.865-3.059-1.867 0-2.152 1.458-2.152 2.962v5.702H9.314V9h3.414v1.561h.048c.476-.9 1.637-1.847 3.37-1.847 3.606 0 4.275 2.373 4.275 5.456v6.356z"/></svg>
         </a>
         <!-- YouTube -->
-        <a href="https://www.youtube.com/channel/UCv8oAV1Fn9WKMGKLEJLcE6g" target="_blank" aria-label="YouTube" class="group">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="transition-transform group-hover:-translate-y-0.5">
-            <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c2.1.6 9.4.6 9.4.6s7.3 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z" fill="var(--primary)"/>
-          </svg>
+        <a href="https://www.youtube.com/channel/UCv8oAV1Fn9WKMGKLEJLcE6g" target="_blank" aria-label="YouTube">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a2.974 2.974 0 0 0-2.093-2.103C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.405.583A2.974 2.974 0 0 0 .502 6.186C0 8.1 0 12 0 12s0 3.9.502 5.814a2.974 2.974 0 0 0 2.093 2.103C4.495 20.5 12 20.5 12 20.5s7.505 0 9.405-.583a2.974 2.974 0 0 0 2.093-2.103C24 15.9 24 12 24 12s0-3.9-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z"/></svg>
         </a>
-        <!-- X (Twitter) -->
-        <a href="https://x.com/Bunion3D" target="_blank" aria-label="Twitter (X)" class="group">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="transition-transform group-hover:-translate-y-0.5">
-            <path d="M18.244 2H21.5l-7.5 8.57L22.5 22H15.4l-5.2-6.23L4.2 22H1l8.1-9.26L1 2h7.3l4.7 5.73L18.244 2zm-1.23 18h1.36L7.07 4h-1.4l11.344 16z" fill="var(--primary)"/>
-          </svg>
+        <!-- X/Twitter -->
+        <a href="https://x.com/Bunion3D" target="_blank" aria-label="Twitter/X">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.392-1.83.656-2.825.775a4.932 4.932 0 0 0 2.163-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.384 4.482A13.944 13.944 0 0 1 1.671 3.149a4.916 4.916 0 0 0 1.523 6.573c-.806-.026-1.566-.248-2.229-.616v.062a4.922 4.922 0 0 0 3.946 4.827c-.387.105-.793.162-1.213.162-.296 0-.585-.029-.868-.082a4.924 4.924 0 0 0 4.604 3.417A9.867 9.867 0 0 1 0 19.54a13.905 13.905 0 0 0 7.548 2.212c9.142 0 14.307-7.721 14.307-14.414 0-.22-.005-.439-.015-.657A10.243 10.243 0 0 0 24 4.59z"/></svg>
         </a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="max-w-6xl mx-auto px-4 py-10 text-sm text-slate-500 grid md:grid-cols-2 gap-4 items-center">
-    <p>© <span id="y"></span> Bunion3D. All rights reserved.</p>
-    <div class="md:text-right">
-      <button onclick="toggleModal(true)" class="underline">Privacy</button>
-    </div>
+  <footer class="bg-white py-6 text-center text-gray-500 text-sm">
+    <p>&copy; 2025 Bunion3D. All rights reserved.</p>
   </footer>
 
-  <!-- Privacy modal (single) -->
-  <div id="privacy" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4">
-    <div class="max-w-lg w-full rounded-2xl bg-white p-6 shadow-xl">
-      <div class="flex items-start justify-between">
-        <h3 class="text-lg font-semibold">Privacy</h3>
-        <button class="text-slate-500" onclick="toggleModal(false)" aria-label="Close">✕</button>
-      </div>
-      <p class="mt-3 text-sm text-slate-600">
-        We only collect the email you submit to the form(s) above, for the purpose of contacting you about Bunion3D.
-        Submissions are stored by our form provider (Netlify or your hosting of choice). We do not sell your data.
-        For deletion requests, email <a href="mailto:privacy@bunion3d.com" class="underline">privacy@bunion3d.com</a>.
-      </p>
-    </div>
-  </div>
-
-  <script>
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Helper
-    const $ = (id) => document.getElementById(id);
-
-    // Personalisation refs
-    const segLine = $('seg-line');
-    const sideSel = $('side');
-    const activitySel = $('activity');
-    const skinSel = $('skin');
-    const painRange = $('pain');
-    const planSummary = $('plan-summary');
-
-    const hiddenSegment = $('hidden-segment');
-    const hiddenSide = $('hidden-side');
-    const hiddenActivity = $('hidden-activity');
-    const hiddenSkin = $('hidden-skin');
-    const hiddenPain = $('hidden-pain');
-    const hiddenTz = $('hidden-tz');
-    const hiddenLang = $('hidden-lang');
-
-    function setSegment(seg){
-      if(hiddenSegment) hiddenSegment.value = seg;
-      if(segLine){
-        if(seg==='Patient') { segLine.textContent='Tailored comfort-first plans with gradual correction.'; }
-        if(seg==='Clinician') { segLine.textContent='Pilot-ready workflow, parametric models, audit trail.'; }
-        if(seg==='Partner') { segLine.textContent='Research & distribution partnerships for scale.'; }
-        segLine.classList.remove('hidden');
-      }
-    }
-
-    function updatePlan(){
-      if(!planSummary) return;
-      const pain = painRange ? Number(painRange.value) : 3;
-      const skin = skinSel ? skinSel.value : 'Normal';
-      let rec = 'soft TPU (~85A), night wear 1–2 hrs';
-      if(pain>=4) rec = 'softer TPU (~80A), start 30–60 min and progress';
-      if(activitySel && activitySel.value==='Active') rec = 'TPU 90A with reinforcement, start 1 hr evenings';
-      if(skin==='Sensitive') rec += ', hypoallergenic liner suggested';
-      planSummary.textContent = `Recommended: ${rec}.`;
-
-      if(hiddenSide && sideSel) hiddenSide.value = sideSel.value;
-      if(hiddenActivity && activitySel) hiddenActivity.value = activitySel.value;
-      if(hiddenSkin && skinSel) hiddenSkin.value = skinSel.value;
-      if(hiddenPain && painRange) hiddenPain.value = String(pain);
-    }
-
-    // Init
-    (function(){
-      setSegment('Patient');
-      try { if(hiddenTz) hiddenTz.value = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
-      if(hiddenLang) hiddenLang.value = navigator.language || '';
-      updatePlan();
-    })();
-
-    // Handlers
-    [sideSel, activitySel, skinSel, painRange].forEach(el=>{ if(el){ el.addEventListener('input', updatePlan); } });
-
-    function toggleModal(open) {
-      const el = document.getElementById('privacy');
-      if (!el) return;
-      if (open) { el.classList.remove('hidden'); el.classList.add('flex'); }
-      else { el.classList.add('hidden'); el.classList.remove('flex'); }
-    }
-  </script>
 </body>
 </html>
