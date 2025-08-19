@@ -3,15 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Bunion3D — Personalised, 3D-printed bunion correctors</title>
   <meta name="description" content="Personalised bunion corrector at scale">
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Bunion3D — Personalised, 3D-printed bunion correctors">
   <meta property="og:description" content="Personalised bunion corrector at scale">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bunion3d.com/">
+  <meta property="og:image" content="https://bunion3d.com/bunion3d-logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.ico" />
+  <meta name="twitter:image" content="https://bunion3d.com/bunion3d-logo.png">
+  <meta name="theme-color" content="#2b6c9e">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     /* Bunion3D Tech-Health Hybrid Palette */
     :root{
@@ -21,9 +33,10 @@
       --charcoal:#1f2937;  /* Charcoal */
       --white:#ffffff;     /* White */
     }
-    body{background:
-      radial-gradient(1200px 600px at 10% 0%, var(--mint) 0%, transparent 60%),
-      radial-gradient(900px 500px at 90% 10%, #eef7ff 0%, transparent 50%);
+    body{
+      background:
+        radial-gradient(1200px 600px at 10% 0%, var(--mint) 0%, transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, #eef7ff 0%, transparent 50%);
       color:var(--charcoal);
     }
     /* Utility helpers mapped to palette */
@@ -95,10 +108,14 @@
             <label class="block text-sm">Discomfort level
               <input id="pain" type="range" min="1" max="5" value="3" class="w-full" />
             </label>
-            <div class="text-sm text-slate-600"><span id="plan-summary">Recommended: soft TPU (~85A), night wear 1–2 hrs.</span> <span class="text-xs text-slate-500">(Informational only; not medical advice.)</span></div>
+            <div class="text-sm text-slate-600">
+              <span id="plan-summary">Recommended: soft TPU (~85A), night wear 1–2 hrs.</span>
+              <span class="text-xs text-slate-500">(Informational only; not medical advice.)</span>
+            </div>
           </div>
         </div>
 
+        <!-- Interest form -->
         <form name="interest" method="POST" data-netlify="true" class="mt-6 space-y-4 md:flex md:space-y-0 md:space-x-3">
           <input type="hidden" name="form-name" value="interest" />
           <input type="hidden" name="segment" id="hidden-segment" />
@@ -115,6 +132,7 @@
         </form>
         <p class="mt-3 text-xs text-slate-500">By joining, you consent to be contacted about Bunion3D. No spam. Unsubscribe at any time.</p>
       </div>
+
       <div class="relative">
         <div class="aspect-[4/3] rounded-2xl bg-white/70 shadow-lg ring-1 ring-slate-200 p-6">
           <div class="grid grid-cols-3 gap-3 h-full">
@@ -149,7 +167,9 @@
   <section id="about" class="max-w-6xl mx-auto px-4 py-14">
     <div class="rounded-2xl border border-slate-200 bg-white/70 p-8 shadow-sm">
       <h2 class="text-2xl font-bold">About Bunion3D</h2>
-      <p class="mt-3 text-slate-600 max-w-3xl">We believe every foot is unique — and effective correction must be, too. Bunion3D combines AI-driven modelling with on-demand 3D printing to deliver personalised bunion correctors. By designing for scale, we aim to make clinical-level personalisation accessible and affordable.</p>
+      <p class="mt-3 text-slate-600 max-w-3xl">
+        We believe every foot is unique — and effective correction must be, too. Bunion3D combines AI-driven modelling with on-demand 3D printing to deliver personalised bunion correctors. By designing for scale, we aim to make clinical-level personalisation accessible and affordable.
+      </p>
       <div class="mt-6 grid md:grid-cols-3 gap-4 text-sm">
         <div class="rounded-xl border border-slate-200 bg-white/60 p-4"><span class="font-semibold">Personalised</span><br>Parametric models tuned to your anatomy.</div>
         <div class="rounded-xl border border-slate-200 bg-white/60 p-4"><span class="font-semibold">Comfort-first</span><br>Materials and fits chosen for wearability.</div>
@@ -198,7 +218,7 @@
       <h2 class="text-2xl font-bold">Understanding Hallux Valgus</h2>
       <div class="mt-4 grid md:grid-cols-2 gap-6 items-start">
         <figure class="text-center">
-          <!-- Picture element: WebP first, JPEG fallback -->
+          <!-- WebP first, JPEG fallback -->
           <picture>
             <source srcset="/bunion-xray.webp" type="image/webp">
             <img src="/bunion-xray.jpg" alt="X-ray showing Hallux Valgus Angle (HVA) and Intermetatarsal Angle (IMA)" class="mx-auto rounded-lg shadow max-w-full h-auto">
@@ -298,7 +318,7 @@
     </div>
   </footer>
 
-  <!-- Privacy modal (single, clean) -->
+  <!-- Privacy modal (single) -->
   <div id="privacy" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4">
     <div class="max-w-lg w-full rounded-2xl bg-white p-6 shadow-xl">
       <div class="flex items-start justify-between">
@@ -320,7 +340,7 @@
     // Helper
     const $ = (id) => document.getElementById(id);
 
-    // Personalisation-related refs
+    // Personalisation refs
     const segLine = $('seg-line');
     const sideSel = $('side');
     const activitySel = $('activity');
@@ -370,9 +390,8 @@
       updatePlan();
     })();
 
-    if([sideSel, activitySel, skinSel, painRange].some(Boolean)){
-      [sideSel, activitySel, skinSel, painRange].forEach(el=>{ if(el) el.addEventListener('input', updatePlan); });
-    }
+    // Handlers
+    [sideSel, activitySel, skinSel, painRange].forEach(el=>{ if(el){ el.addEventListener('input', updatePlan); } });
 
     function toggleModal(open) {
       const el = document.getElementById('privacy');
