@@ -84,7 +84,7 @@
   </header>
 
   <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+  <section class="max-w-6xl mx-auto px-4 pt-12 pb-8 md:pt-16 md:pb-12">
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div>
         <h2 class="text-2xl md:text-3xl font-semibold">Every Foot is Unique.</h2>
@@ -95,7 +95,7 @@
         <a href="#join" class="btn-primary inline-flex items-center gap-2 mt-6">Join the early access list</a>
       </div>
 
-      <!-- Product image (single WEBP) -->
+      <!-- Product image -->
       <div class="relative">
         <img
           src="/bunion3d-toe-separator.webp"
@@ -104,13 +104,15 @@
           loading="eager"
           fetchpriority="high"
         />
-        <p class="mt-3 text-xs text-slate-500 text-center">Illustrative product render — no personal data is captured on this site.</p>
+        <p class="mt-3 text-xs text-slate-500 text-center">
+          Scan it. Bunion3D engineers it. Delivered to your door.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="max-w-6xl mx-auto px-4 py-10">
+  <section id="about" class="max-w-6xl mx-auto px-4 pt-6 pb-10">
     <div class="section-card p-7">
       <div class="section-head">
         <div class="badge"><span class="emoji">👩‍🔧</span></div>
@@ -125,38 +127,38 @@
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section id="how" class="max-w-6xl mx-auto px-4 py-10">
-    <div class="section-card p-7">
-      <div class="section-head">
+  <!-- How It Works (single column) -->
+  <section id="how" class="max-w-4xl mx-auto px-4 py-10">
+    <div class="section-card p-7 text-center">
+      <div class="section-head justify-center">
         <div class="badge"><span class="emoji">🦶</span></div>
         <h2 class="text-xl md:text-2xl font-bold">How It Works</h2>
       </div>
-      <ul class="mt-4 grid md:grid-cols-2 gap-2 text-slate-700">
+      <ul class="mt-6 space-y-2 text-slate-700 text-left max-w-xl mx-auto">
         <li><span class="font-semibold">Scan</span> – Use your smartphone to capture your foot.</li>
         <li><span class="font-semibold">Analyse</span> – Our technology measures and interprets your anatomy.</li>
         <li><span class="font-semibold">Personalise</span> – Designed to fit your foot, not the other way around.</li>
         <li><span class="font-semibold">Manufacture</span> – Built for comfort in skin-safe materials.</li>
-        <li class="md:col-span-2"><span class="font-semibold">Delivery</span> – Shipped straight to your door.</li>
+        <li><span class="font-semibold">Delivery</span> – Shipped straight to your door.</li>
       </ul>
     </div>
   </section>
 
-  <!-- Why Bunion3D -->
-  <section id="why" class="max-w-6xl mx-auto px-4 py-10">
-    <div class="section-card p-7">
-      <div class="section-head">
+  <!-- Why Bunion3D (single column) -->
+  <section id="why" class="max-w-4xl mx-auto px-4 py-10">
+    <div class="section-card p-7 text-center">
+      <div class="section-head justify-center">
         <img src="/bunion3d-logo.png" alt="Bunion3D logo" class="w-10 h-10 rounded-full ring-1 ring-slate-200 bg-white p-1">
         <h2 class="text-xl md:text-2xl font-bold">Why Bunion3D?</h2>
       </div>
-      <ul class="mt-4 grid md:grid-cols-2 gap-3 text-slate-700">
+      <ul class="mt-6 space-y-3 text-slate-700 text-left max-w-xl mx-auto">
         <li><span class="font-semibold">Tailored</span> – Every corrector is engineered to match your unique anatomy.</li>
         <li><span class="font-semibold">Affordable</span> – Innovation makes personalised care more accessible.</li>
         <li><span class="font-semibold">Clinically Grounded</span> – Built on research and protected by patents.</li>
         <li><span class="font-semibold">Sustainable</span> – Smart manufacturing reduces waste and materials.</li>
         <li><span class="font-semibold">Durable</span> – Mesh structure: light, strong, and long-lasting.</li>
         <li><span class="font-semibold">Breathable</span> – Ventilated design reduces sweat, even in hot weather.</li>
-        <li class="md:col-span-2"><span class="font-semibold">Beautiful</span> – Available in colours to match your style and shoes.</li>
+        <li><span class="font-semibold">Beautiful</span> – Available in colours to match your style and shoes.</li>
       </ul>
     </div>
   </section>
@@ -197,19 +199,17 @@
         <button class="btn-primary">Notify me</button>
       </form>
       <p class="mt-2 text-xs text-slate-500">We’ll only use your email to contact you about Bunion3D. Unsubscribe anytime.</p>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-500 grid md:grid-cols-2 gap-4 items-center">
-    <p>© <span id="y"></span> Bunion3D. All rights reserved.</p>
-    <div class="md:text-right">
-      <a href="mailto:info@bunion3d.com" class="underline">info@bunion3d.com</a>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+      <!-- Social Links -->
+      <div class="mt-6 flex flex-wrap items-center gap-5 text-slate-600">
+        <a href="https://www.facebook.com/Bunion3D" target="_blank" aria-label="Facebook" title="Facebook">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2v-3h2V9.6c0-2 1.2-3.2 3-3.2.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12"/></svg>
+        </a>
+        <a href="https://www.instagram.com/bunion3d/" target="_blank" aria-label="Instagram" title="Instagram">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0zM7 4a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A3.5 3.5 0 1 1 11.999 14 3.5 3.5 0 0 1 12 7.5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/Bunion3D/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14M8.3 17v-7H5.7v7h2.6m-1.3-8.2c.8 0 1.3-.5 1.3-1.2 0-.7-.5-1.2-1.3-1.2S6 7 6 7.6c0 .7.5 1.2 1.3 1.2M18.3 17v-3.8c0-2-1.1-3-2.5-3a2.2 2.2 0 0 0-2 1h-.1v-1h-2.6s.1 2.8 0 7h2.6v-3.9c0-.2 0-.4.1-.5.2-.4.6-.8 1.2-.8.8 0 1.2.6 1.2 1.6V17h2.1z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCv8oAV1Fn9WKMGKLEJLcE6g" target="_blank" aria-label="YouTube" title="YouTube">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2.1.6 9.4.6 
