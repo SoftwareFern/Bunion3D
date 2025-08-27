@@ -45,10 +45,6 @@
       padding: .75rem 1.25rem; font-weight:600; transition: filter .2s ease;
     }
     .btn-primary:hover{ filter: brightness(0.95); }
-    .social-icon{ width:28px; height:28px; fill:var(--primary); transition: transform .25s ease, opacity .25s ease; opacity:.9; }
-    .social-icon:hover{ transform: translateY(-2px) scale(1.08); opacity:1; }
-
-    /* Section header + cards */
     .section-head{ display:flex; align-items:center; gap:.75rem; }
     .badge{
       width:42px; height:42px; border-radius:9999px;
@@ -123,13 +119,13 @@
         <div class="mt-10">
           <!-- Desktop -->
           <div class="hidden md:block">
-            <img src="/images/infographic-4c.webp"
+            <img src="/assets/infographic-4c.webp"
                  alt="Bunion3D 4C Process: Conceive, Check, Create, Correct"
                  class="rounded-xl shadow-md w-full h-auto" loading="lazy">
           </div>
           <!-- Mobile -->
           <div class="block md:hidden">
-            <img src="/images/infographic-4c-mobile.webp"
+            <img src="/assets/infographic-4c-mobile.webp"
                  alt="Bunion3D 4C Process: Conceive, Check, Create, Correct"
                  class="rounded-xl shadow-md w-full h-auto" loading="lazy">
           </div>
@@ -158,6 +154,13 @@
           <li><span class="font-semibold">Breathable</span> — Ventilated design reduces sweat.</li>
           <li><span class="font-semibold">Beautiful</span> — Colours to match your style and shoes.</li>
         </ul>
+
+        <!-- Comparison Visual -->
+        <div class="mt-10">
+          <img src="/images/why-comparison.webp" 
+               alt="Traditional vs Bunion3D comparison"
+               class="rounded-xl shadow-md w-full h-auto" loading="lazy">
+        </div>
       </div>
       <div>
         <img src="/images/why-bunion3d.webp" alt="Why Choose Bunion3D" class="rounded-2xl shadow-md w-full h-auto" loading="lazy">
@@ -214,19 +217,16 @@
           <div class="badge"><span class="emoji">🤝</span></div>
           <h2 class="text-xl md:text-2xl font-bold">Join Us</h2>
         </div>
-
         <ul class="section-body mt-6 space-y-3 text-slate-700 list-disc list-inside">
           <li><span class="font-semibold">Patients</span> — Be first to access personalised bunion correctors.</li>
           <li><span class="font-semibold">Clinics</span> — Partner with us to deliver better outcomes.</li>
           <li><span class="font-semibold">Investors &amp; collaborators</span> — Help shape the future of digital health.</li>
         </ul>
-
         <!-- Waitlist form (Formspree) -->
         <form id="waitlist" action="https://formspree.io/f/XXXXYYYY" method="POST"
               class="mt-6 flex flex-col sm:flex-row gap-3 max-w-xl">
           <input required name="email" type="email" placeholder="Email address"
                 class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
-          <!-- Honeypot -->
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
           <input type="hidden" name="_subject" value="Bunion3D Waitlist Signup" />
           <button class="btn-primary">Notify me</button>
@@ -250,16 +250,12 @@
   <!-- Scripts -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Formspree AJAX
     const form = document.getElementById('waitlist');
     const msg = document.getElementById('waitlist-msg');
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       msg.textContent = 'Submitting...';
       msg.className = 'mt-2 text-sm text-slate-500';
-
       try {
         const formData = new FormData(form);
         const res = await fetch(form.action, {
@@ -267,7 +263,6 @@
           headers: { 'Accept': 'application/json' },
           body: formData
         });
-
         if (res.ok) {
           form.reset();
           msg.textContent = 'Thanks! You’re on the list.';
