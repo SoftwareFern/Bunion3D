@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Thank you — Bunion3D</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root { --bg:#f7fafc; --ink:#0f172a; --muted:#475569; --brand:#2b6cb0; }
+    * { box-sizing: border-box; }
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink); background:var(--bg); display:grid; min-height:100vh; place-items:center;
+    }
+    .card{
+      background:#fff; padding:2rem 2.5rem; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.08);
+      max-width:640px; width:min(92vw,640px); text-align:left;
+    }
+    h1{ margin:.25rem 0 .75rem; font-size:1.8rem; }
+    p{ margin:.5rem 0; color:var(--muted); line-height:1.6; }
+    .actions{ margin-top:1.25rem; display:flex; gap:.75rem; flex-wrap:wrap; }
+    a.button{
+      display:inline-block; text-decoration:none; padding:.75rem 1rem; border-radius:12px;
+      background:var(--brand); color:#fff; font-weight:600;
+    }
+    a.link{ color:var(--brand); text-decoration:none; }
+    small{ color:#64748b; }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="t">
+    <h1 id="t">Thank you — you’re on the list</h1>
+    <p>
+      <strong>Bunion3D values your time and appreciates your interest.</strong>
+      Your signup helps us shape a more comfortable, personally-fit bunion-care experience.
+    </p>
+    <p>You’ll receive occasional updates on milestones, early-access invites for patients and clinics, and research insights on comfort, fit, and outcomes.</p>
+    <p><small>We’ll only use your email for Bunion3D updates. Unsubscribe anytime.</small></p>
+
+    <div class="actions">
+      <a class="button" href="https://bunion3d.com/">Back to home</a>
+      <a class="link" href="mailto:team@bunion3d.com">Contact us</a>
+    </div>
+  </main>
+</body>
+</html>
