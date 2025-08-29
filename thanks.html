@@ -15,8 +15,9 @@
       background:#fff; padding:2rem 2.5rem; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.08);
       max-width:640px; width:min(92vw,640px); text-align:left;
     }
-    h1{ margin:.25rem 0 .75rem; font-size:1.8rem; }
+    h1{ margin:.25rem 0 .75rem; font-size:1.9rem; }
     p{ margin:.5rem 0; color:var(--muted); line-height:1.6; }
+    .callout{ background:#f1f5f9; padding:1rem 1.2rem; border-radius:12px; margin:1rem 0; }
     .actions{ margin-top:1.25rem; display:flex; gap:.75rem; flex-wrap:wrap; }
     a.button{
       display:inline-block; text-decoration:none; padding:.75rem 1rem; border-radius:12px;
@@ -24,16 +25,29 @@
     }
     a.link{ color:var(--brand); text-decoration:none; }
     small{ color:#64748b; }
+    .who { font-weight:600; color:var(--ink); }
   </style>
 </head>
 <body>
   <main class="card" role="main" aria-labelledby="t">
-    <h1 id="t">Thank you — you’re on the list</h1>
+    <h1 id="t">Thank you<span id="nameSpan"></span> — you’re on the list!</h1>
+
     <p>
       <strong>Bunion3D values your time and appreciates your interest.</strong>
       Your signup helps us shape a more comfortable, personally-fit bunion-care experience.
     </p>
-    <p>You’ll receive occasional updates on milestones, early-access invites for patients and clinics, and research insights on comfort, fit, and outcomes.</p>
+
+    <div class="callout">
+      <p style="margin:0">
+        We’ll keep you posted at <span id="emailSpan" class="who">the email you provided</span> with:
+      </p>
+      <ul style="margin:.6rem 0 0 1.1rem; padding:0; color:var(--muted)">
+        <li>Product milestones and launch news</li>
+        <li>Early-access and pilot invitations for patients & clinics</li>
+        <li>Research insights on comfort, fit, and outcomes</li>
+      </ul>
+    </div>
+
     <p><small>We’ll only use your email for Bunion3D updates. Unsubscribe anytime.</small></p>
 
     <div class="actions">
@@ -41,5 +55,33 @@
       <a class="link" href="mailto:team@bunion3d.com">Contact us</a>
     </div>
   </main>
+
+  <script>
+    (function () {
+      var name = (localStorage.getItem('b3d_name') || '').trim();
+      var email = (localStorage.getItem('b3d_email') || '').trim();
+
+      // Personalize greeting
+      var nameSpan = document.getElementById('nameSpan');
+      if (name) {
+        // Show: "Thank you, Shohin"
+        nameSpan.textContent = ', ' + name;
+      } else {
+        nameSpan.textContent = '';
+      }
+
+      // Show destination email (fallback if missing)
+      var emailSpan = document.getElementById('emailSpan');
+      if (email && /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+        emailSpan.textContent = email;
+      } else {
+        emailSpan.textContent = 'the email you provided';
+      }
+
+      // Clean up for privacy
+      localStorage.removeItem('b3d_name');
+      localStorage.removeItem('b3d_email');
+    })();
+  </script>
 </body>
 </html>
