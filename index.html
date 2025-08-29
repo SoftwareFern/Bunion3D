@@ -187,9 +187,14 @@
         <p class="mt-6 text-slate-700">
           Be the first to know when Bunion3D launches. Patients, clinics, and collaborators are welcome to join our journey.
         </p>
-        <!-- Waitlist form (Option A: no JS, redirects to thanks.html) -->
+        <!-- Waitlist form (Option A: no JS, redirects to thanks.html; stores name+email for personalisation) -->
         <form id="waitlist" action="https://formspree.io/f/mblaglla" method="POST"
+              onsubmit="localStorage.setItem('b3d_email', document.getElementById('email').value); localStorage.setItem('b3d_name', document.getElementById('fullName')?.value||'')"
               class="mt-6 flex flex-col sm:flex-row gap-3 max-w-xl">
+          <label for="fullName" class="sr-only">Name</label>
+          <input name="name" id="fullName" type="text" placeholder="Your name (optional)"
+                 class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
+
           <label for="email" class="sr-only">Email address</label>
           <input required name="email" id="email" type="email" autocomplete="email" placeholder="Email address"
                  class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
