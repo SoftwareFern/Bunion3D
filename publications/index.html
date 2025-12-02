@@ -11,7 +11,7 @@
   <!-- Link to your Google Scholar profile -->
   <link rel="me" href="https://scholar.google.co.nz/citations?user=H7jr72sAAAAJ&amp;hl=en" />
 
-  <!-- Optional structured data for Google -->
+  <!-- Optional structured data for Google: list of publications -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -263,9 +263,21 @@
       text-decoration: none;
       display: inline-block;
       margin-top: 0.25rem;
+      margin-right: 0.4rem;
     }
     .pub-links a:hover {
       text-decoration: underline;
+    }
+    .about-author {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed #e5e7eb;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+    .about-author h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
     }
     @media (min-width: 720px) {
       body { padding: 3rem; }
@@ -273,31 +285,86 @@
       .pub-card { padding: 1.1rem 1.4rem; }
     }
   </style>
-  <!-- Person Schema for Shohin Aheleroff -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Shohin Aheleroff",
-  "givenName": "Shohin",
-  "familyName": "Aheleroff",
-  "jobTitle": "Researcher in Industry 4.0, Mass Personalisation, and Digital Twin",
-  "affiliation": {
-    "@type": "Organization",
-    "name": "University of Auckland"
-  },
-  "url": "https://bunion3d.com/publications/",
-  "image": "https://bunion3d.com/bunion3d-logo.png",
-  "sameAs": [
-    "https://scholar.google.com/citations?user=H7jr72sAAAAJ",
-    "https://www.linkedin.com/in/shohin",
-    "https://www.researchgate.net/profile/Shohin-Aheleroff",
-    "https://uoa-iai.github.io/authors/s.-aheleroff/",
-    "https://orcid.org/0000-0002-xxxx-xxxx"
-  ],
-  "mainEntityOfPage": "https://bunion3d.com/publications/"
-}
-</script>
+
+  <!-- Rich Person Schema for Shohin Aheleroff -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shohin Aheleroff",
+    "givenName": "Shohin",
+    "familyName": "Aheleroff",
+    "jobTitle": "Researcher in Digital Twin, Industry 4.0/5.0, and Mass Personalisation",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "University of Auckland"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Bunion3D"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "ORCID",
+        "value": "0000-0002-2631-9955"
+      }
+    ],
+    "url": "https://bunion3d.com/publications/",
+    "image": "https://bunion3d.com/bunion3d-logo.png",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=H7jr72sAAAAJ",
+      "https://orcid.org/0000-0002-2631-9955",
+      "https://www.linkedin.com/in/shohin",
+      "https://www.researchgate.net/profile/Shohin-Aheleroff",
+      "https://uoa-iai.github.io/authors/s.-aheleroff/"
+    ],
+    "knowsAbout": [
+      "Digital Twin",
+      "Industry 4.0",
+      "Industry 5.0",
+      "Mass Personalisation",
+      "Smart Manufacturing",
+      "Cyber-Physical Systems",
+      "IoT-enabled Systems"
+    ],
+    "award": [
+      "Top 0.5% Global Scholar – ScholarGPS 2024",
+      "University of Auckland Distinguished Graduate Award",
+      "New Zealand Prime Minister’s Scholarship to Latin America",
+      "First Prize – IoT & Augmented Reality Hackathon, Auckland",
+      "$100k Challenge Qualifier – University of Auckland Entrepreneurship Programme",
+      "Best Paper Award – 49th International Conference on Computer & Industrial Engineering",
+      "New Zealand Certificate in Adult and Tertiary Teaching (High Distinction, A+)"
+    ],
+    "hasCredential": [
+      "Scrum Master Primer (High Distinction), Charles Sturt University (2017)",
+      "Accredited Business Mentor, Auckland Chamber of Commerce (2016)",
+      "Professional Scrum Master (PSM), Scrum.org (2013)",
+      "Project Management Professional (PMP), PMI ID 1537183 (2012)",
+      "PRINCE2 Practitioner, ID 02314725-01-8CRV (2011)",
+      "CoBIT Certification (2011)",
+      "Enterprise Risk Management, MTN Academy (2011)",
+      "Harvard Business School: Leadership, Strategic Thinking, Performance Measurement and Improvement (2010)",
+      "Licensed LBC Facilitator – Kotter's Leading Bold Change (2010)",
+      "ITIL Certification, EXIN ID c.712683 (2008)"
+    ],
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "Machines (Journal)",
+        "roleName": "Editor"
+      },
+      {
+        "@type": "Organization",
+        "name": "Frontiers Journals",
+        "roleName": "Editor"
+      }
+    ],
+    "citation": "Author of high-impact works with over 1,800 citations in Digital Twin, Mass Personalisation, Industry 4.0/5.0, and smart manufacturing.",
+    "mainEntityOfPage": "https://bunion3d.com/publications/"
+  }
+  </script>
 </head>
 <body>
   <div class="wrap">
@@ -334,12 +401,12 @@
           <span class="tag">DTaaS</span>
           <span class="tag">Industry 4.0</span>
         </div>
-       <div class="pub-links">
-  <a href="https://scholar.google.com/scholar?q=Digital+Twin+as+a+Service+(DTaaS)+in+Industry+4.0:+An+Architecture+Reference+Model" target="_blank">
-    Google Scholar
-  </a>
-  <a href="/publications/DTaaS/" rel="bookmark">Author page</a>
-</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/scholar?q=Digital+Twin+as+a+Service+(DTaaS)+in+Industry+4.0:+An+Architecture+Reference+Model" target="_blank">
+            Google Scholar
+          </a>
+          <a href="/publications/DTaaS/" rel="bookmark">Author page</a>
+        </div>
       </article>
 
       <!-- 2. IoT-enabled smart appliances -->
@@ -377,9 +444,9 @@
           <span class="tag">Sustainability</span>
           <span class="tag">Resilience</span>
         </div>
-       <div class="pub-links">
-  <a href="https://scholar.google.com/scholar?q=Mass+Personalisation+as+a+Service+in+Industry+4.0:+A+Resilient+Response+Case+Study" target="_blank">Google Scholar</a>
-  <a href="/publications/MPaaS/" rel="bookmark">Author page</a>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/scholar?q=Toward+sustainability+and+resilience+with+Industry+4.0+and+Industry+5.0"
+             target="_blank" rel="noopener">View on Google Scholar</a>
         </div>
       </article>
 
@@ -399,7 +466,8 @@
         </div>
         <div class="pub-links">
           <a href="https://scholar.google.com/scholar?q=Mass+Personalisation+as+a+Service+in+Industry+4.0:+A+Resilient+Response+Case+Study"
-             target="_blank" rel="noopener">View on Google Scholar</a>
+             target="_blank" rel="noopener">Google Scholar</a>
+          <a href="/publications/MPaaS/" rel="bookmark">Author page</a>
         </div>
       </article>
 
@@ -464,6 +532,24 @@
       </article>
 
     </section>
+
+    <!-- About the author (humble, factual) -->
+    <section class="about-author">
+      <h2>About the author</h2>
+      <p>
+        Shohin Aheleroff works in the areas of Digital Twin, Industry 4.0/5.0, mass personalisation, and smart manufacturing.
+        His research has appeared in journals and conferences such as <em>Advanced Engineering Informatics</em> and CIRP CMS,
+        and has received more than 1,800 citations across Google Scholar and other indexing services.
+      </p>
+      <p>
+        His work has been recognised through several research, teaching, and innovation awards, including recognition as a
+        Top 0.5% Global Scholar (ScholarGPS 2024), the University of Auckland Distinguished Graduate Award, and the New Zealand
+        Prime Minister’s Scholarship to Latin America. A more detailed academic profile, including editorial roles and
+        certifications, is available on the
+        <a href="/author/shohin-aheleroff/">author page</a>.
+      </p>
+    </section>
+
   </div>
 </body>
 </html>
